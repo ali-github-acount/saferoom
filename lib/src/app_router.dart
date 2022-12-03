@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:saferoom/src/views/screens/screen_home.dart';
 import 'package:saferoom/src/views/screens/screen_sign_in.dart';
 import 'package:saferoom/src/views/screens/screen_sign_up.dart';
+import 'package:saferoom/src/views/screens/screen_start_app.dart';
 
 abstract class SRRouter {
   const SRRouter._();
@@ -10,7 +11,7 @@ abstract class SRRouter {
   static GoRouter build({
     required bool isSignedIn,
     List<GoRoute> routes = const [],
-    String initialLocation = ScreenHome.path,
+    String initialLocation = ScreenStartApp.path,
     String? Function(GoRouterState)? redirect,
     List<String> publicPaths = const [],
     List<String> loginPaths = const [],
@@ -25,8 +26,8 @@ abstract class SRRouter {
         bool isPublic = _publicPaths(publicPaths).any((e) => e == state.subloc);
         if (isPublic) return null;
         bool isLogin = _loginPaths(loginPaths).any((e) => e == state.subloc);
-        if (!isSignedIn) return isLogin ? null : '/home';
-        if (isSignedIn && isLogin) return '/';
+        if (!isSignedIn) return isLogin ? null : '/';
+        if (isSignedIn && isLogin) return '/home';
         return null;
       },
       errorBuilder: (_, r) => const Scaffold(),
@@ -57,8 +58,16 @@ abstract class AppRoutes {
       builder: (_, __) => const ScreenHome(),
     ),
     GoRoute(
+      path: ScreenStartApp.path,
+      builder: (_, __) => const ScreenStartApp(),
+    ),
+    GoRoute(
       path: ScreenSignIn.path,
       builder: (_, __) => const ScreenSignIn(),
+    ),
+    GoRoute(
+      path: ScreenSignUp.path,
+      builder: (_, __) => const ScreenSignUp(),
     ),
   ];
 

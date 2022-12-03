@@ -18,6 +18,10 @@ class AuthBloc extends Cubit<AuthState> {
     emit(state.copyWith(user: state.user.copyWith(name: name)));
   }
 
+  void setLastname(String? lastname) {
+    emit(state.copyWith(user: state.user.copyWith(lastname: lastname)));
+  }
+
   void setEmail(String? email) {
     emit(state.copyWith(user: state.user.copyWith(email: email)));
   }

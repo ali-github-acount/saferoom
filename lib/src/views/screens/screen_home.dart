@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:saferoom/src/views/screens/screen_sign_in.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
 
 class ScreenHome extends StatelessWidget {
   static const String path = '/home';
@@ -9,10 +9,8 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: TextButton(
-              onPressed: () => context.go(ScreenSignIn.path),
-              child: const Text("sign in"))),
-    );
+        body: Container(
+      child: Center(child: Text(context.read<AuthBloc>().state.user.name!)),
+    ));
   }
 }

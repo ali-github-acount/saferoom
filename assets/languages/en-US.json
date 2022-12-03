@@ -1,0 +1,13 @@
+{
+    "startApp":{
+        "title": "SafeRoom"
+    },
+
+    "signIn":{
+        "title": "Signin",
+        "message":"a message",
+        "SignInBtn":"signIn",
+        "signUpMsg":"don't have an acount..."
+        
+    }
+}

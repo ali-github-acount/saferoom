@@ -1,5 +1,5 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
+import 'package:saferoom/src/views/forms/form_sign_in.dart';
 
 class ScreenSignIn extends StatelessWidget {
   static const String path = '/sign-in';
@@ -7,6 +7,6 @@ class ScreenSignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(body: FormSignIn());
   }
 }

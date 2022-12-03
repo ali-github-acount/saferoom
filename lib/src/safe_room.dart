@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,36 +7,48 @@ import 'package:saferoom/src/api/firebase_api.dart';
 import 'package:saferoom/src/app_router.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
 import 'package:saferoom/src/repositories/repo_auth.dart';
+import 'package:saferoom/src/supported_languages.dart';
 
-class SafeRoom extends StatelessWidget {
-  const SafeRoom({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SafeRoomProvider();
+class SafeRoom {
+  static void init() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await EasyLocalization.ensureInitialized();
+    runApp(
+      EasyLocalization(
+        supportedLocales: SupportedLanguage.getLanguages,
+        path: 'languages',
+        child: const SafeRoomRepositoriesProvider(),
+      ),
+    );
   }
 }
 
-class SafeRoomProvider extends StatelessWidget {
-  const SafeRoomProvider({super.key});
+class SafeRoomRepositoriesProvider extends StatelessWidget {
+  const SafeRoomRepositoriesProvider({super.key});
 
   @override
   Widget build(BuildContext context) {
     final auth = FirebaseAuth.instance;
     final fs = FirebaseFirestore.instance;
 
-    return MultiRepositoryProvider(
+    return MultiRepositoryProvider(providers: [
+      RepositoryProvider(create: (_) => AuthRepo(FireBaseApi(auth, fs)))
+    ], child: const SafeRoomBlocsProvider());
+  }
+}
+
+class SafeRoomBlocsProvider extends StatelessWidget {
+  const SafeRoomBlocsProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
       providers: [
-        RepositoryProvider(create: (_) => AuthRepo(FireBaseApi(auth, fs)))
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(context.read<AuthRepo>()),
+        )
       ],
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider<AuthBloc>(
-            create: (context) => AuthBloc(context.read<AuthRepo>()),
-          )
-        ],
-        child: const SafeRoomApp(),
-      ),
+      child: const SafeRoomApp(),
     );
   }
 }
@@ -63,6 +76,9 @@ class SafeRoomApp extends StatelessWidget {
           routeInformationParser: router.routeInformationParser,
           routerDelegate: router.routerDelegate,
           useInheritedMediaQuery: true,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
         );
       },
     );
