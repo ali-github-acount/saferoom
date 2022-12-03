@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>794536168653-7osl5o25ahhshbeftpd1s3g2kbb2s7fm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.794536168653-7osl5o25ahhshbeftpd1s3g2kbb2s7fm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBNDRKxi-7uh9jSGTO9Gr6YEgPm0Cpo6QU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>794536168653</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.saferoom.saferoom</string>
+	<key>PROJECT_ID</key>
+	<string>saferoom-c9b4d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>saferoom-c9b4d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:794536168653:ios:213d2d2ebc4488a927ad84</string>
+</dict>
+</plist>

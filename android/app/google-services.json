@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "794536168653",
+    "project_id": "saferoom-c9b4d",
+    "storage_bucket": "saferoom-c9b4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794536168653:android:184e05e44091540a27ad84",
+        "android_client_info": {
+          "package_name": "com.saferoom.saferoom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794536168653-9pgllqkdc80ln81aa7ahppamot7avibb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwDm5ObUPoOPyd3YAKQRYVrfG1CL9bZI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794536168653-9pgllqkdc80ln81aa7ahppamot7avibb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
