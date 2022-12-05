@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:saferoom/src/views/forms/form_sign_in.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
+import 'package:saferoom/src/views/lists/lists_languages.dart';
+
+import '../forms/form_sign_in.dart';
 
 class ScreenSignIn extends StatelessWidget {
   static const String path = '/sign-in';
@@ -7,6 +11,22 @@ class ScreenSignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: FormSignIn());
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state.isLoading) {
+          return const CircularProgressIndicator(value: 10);
+        }
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                FormSignIn(),
+                const ListsLanguage(),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

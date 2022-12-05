@@ -10,12 +10,12 @@ class AuthRepo {
     return _authApi.currentUser();
   }
 
-  Future<bool> signUpWithEmailAndPassword(SRUser user) {
-    return _authApi.signUpWithEmailAndPassword(user);
+  Future<bool> signUpWithEmail(SRUser user) {
+    return _authApi.signUpWithEmail(user);
   }
 
-  Future<bool> signInWithEmailAndPassword(SRUser user) {
-    return _authApi.signInWithEmailAndPassword(user);
+  Future<bool> signInWithEmail(SRUser user) {
+    return _authApi.signInWithEmail(user);
   }
 
   Future<bool> signOutUser() {

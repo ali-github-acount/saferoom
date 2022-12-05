@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saferoom/src/api/firebase_api.dart';
+import 'package:saferoom/src/api/firebase_auth_api.dart';
 import 'package:saferoom/src/app_router.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
 import 'package:saferoom/src/repositories/repo_auth.dart';
@@ -13,13 +15,14 @@ class SafeRoom {
   static void init() async {
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
-    runApp(
-      EasyLocalization(
+    runApp(DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => EasyLocalization(
         supportedLocales: SupportedLanguage.getLanguages,
         path: 'languages',
         child: const SafeRoomRepositoriesProvider(),
       ),
-    );
+    ));
   }
 }
 
@@ -32,7 +35,7 @@ class SafeRoomRepositoriesProvider extends StatelessWidget {
     final fs = FirebaseFirestore.instance;
 
     return MultiRepositoryProvider(providers: [
-      RepositoryProvider(create: (_) => AuthRepo(FireBaseApi(auth, fs)))
+      RepositoryProvider(create: (_) => AuthRepo(FirebaseAuthApi(auth, fs)))
     ], child: const SafeRoomBlocsProvider());
   }
 }
@@ -66,6 +69,7 @@ class SafeRoomApp extends StatelessWidget {
           publicPaths: AppRoutes.publicPaths,
           loginPaths: AppRoutes.loginPaths,
         );
+
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           showPerformanceOverlay: false,

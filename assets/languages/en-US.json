@@ -6,8 +6,28 @@
     "signIn":{
         "title": "Signin",
         "message":"a message",
-        "SignInBtn":"signIn",
+        "passwordLabel":"Password",
+        "emailLabel":"Email Address",
+        "signInBtn":"signIn",
         "signUpMsg":"don't have an acount..."
         
+    },
+    "signUp":{
+        "title": "SignUp",
+        "message":"a message",
+        "nameLabel":"Name",
+        "lastnameLabel":"Family Name",
+        "passwordLabel":"Password",
+        "emailLabel":"Email Address",
+        "signUpBtn":"signUp",
+        "signInMsg":"already have acount"
+        
+    },
+
+    "language":{
+        "persion": "Persion",
+        "english": "English",
+        "other":"...other"
+    
     }
 }

@@ -13,7 +13,7 @@ class ScreenStartApp extends StatelessWidget {
       body: Center(
           child: TextButton(
               onPressed: () => context.go(ScreenSignIn.path),
-              child: Text(tr('StartApp.title')))),
+              child: Text(tr('startApp.title')))),
     );
   }
 }

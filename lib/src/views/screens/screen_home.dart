@@ -10,7 +10,17 @@ class ScreenHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      child: Center(child: Text(context.read<AuthBloc>().state.user.name!)),
+      child: Center(
+          child: Column(
+        children: [
+          Text(context.read<AuthBloc>().state.user.name ?? "hellp"),
+          ElevatedButton(
+              onPressed: () {
+                context.read<AuthBloc>().signOut();
+              },
+              child: const Text("logout"))
+        ],
+      )),
     ));
   }
 }

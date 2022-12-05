@@ -1,0 +1,31 @@
+{
+    "startApp":{
+        "title": "SafeRoom"
+    },
+
+    "signIn":{
+        "title": "ورود حساب",
+        "message":"a message",
+        "passwordLabel":"رمز عبور",
+        "emailLabel":"آدرس الکترونیکی",
+        "signInBtn":"ورود",
+        "signUpMsg":"حساب ورودی ندارید..."
+        
+    },
+    "signUp":{
+        "title": "ایجاد حساب",
+        "message":"a message",
+        "nameLabel":"اسم",
+        "lastnameLabel":"اسم فامیلی",
+        "passwordLabel":"رمز عبور",
+        "emailLabel":"آدرس الکترونیکی",
+        "signUpBtn":"ایجاد حساب",
+        "signInMsg":"حساب قبلی"
+        
+    },
+    "language":{
+        "persion": "فارسی",
+        "english": "انگلیسی",
+        "other":"...دیگر"
+    }
+}

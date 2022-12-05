@@ -11,7 +11,7 @@ abstract class SRRouter {
   static GoRouter build({
     required bool isSignedIn,
     List<GoRoute> routes = const [],
-    String initialLocation = ScreenStartApp.path,
+    String initialLocation = '/home',
     String? Function(GoRouterState)? redirect,
     List<String> publicPaths = const [],
     List<String> loginPaths = const [],
@@ -27,6 +27,7 @@ abstract class SRRouter {
         if (isPublic) return null;
         bool isLogin = _loginPaths(loginPaths).any((e) => e == state.subloc);
         if (!isSignedIn) return isLogin ? null : '/';
+
         if (isSignedIn && isLogin) return '/home';
         return null;
       },
@@ -36,8 +37,6 @@ abstract class SRRouter {
 
   static List<String> _loginPaths(List<String> loginPaths) {
     return [
-      '/sign-in',
-      '/sign-up',
       ...loginPaths,
     ];
   }
@@ -71,7 +70,11 @@ abstract class AppRoutes {
     ),
   ];
 
-  static const List<String> loginPaths = [ScreenSignIn.path, ScreenSignUp.path];
+  static const List<String> loginPaths = [
+    ScreenStartApp.path,
+    ScreenSignIn.path,
+    ScreenSignUp.path,
+  ];
 
   static const List<String> publicPaths = [];
 }

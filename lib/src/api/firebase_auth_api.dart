@@ -3,12 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:saferoom/src/api/auth_api.dart';
 import 'package:saferoom/src/models/entities/user.dart';
 
-class FireBaseApi implements AuthApi {
+class FirebaseAuthApi implements AuthApi {
   static const String _collection = 'users';
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
 
-  FireBaseApi(
+  FirebaseAuthApi(
     FirebaseAuth auth,
     FirebaseFirestore firestore,
   )   : _auth = auth,
@@ -28,10 +28,7 @@ class FireBaseApi implements AuthApi {
   }
 
   @override
-  Future<bool> signInWithEmailAndPassword(SRUser user) async {
-    if (user.email == null) throw 'email cannot be null';
-    if (user.logPassword == null) throw 'password cannot be null';
-
+  Future<bool> signInWithEmail(SRUser user) async {
     try {
       final result = await _auth.signInWithEmailAndPassword(
         email: user.email!,
@@ -44,20 +41,17 @@ class FireBaseApi implements AuthApi {
   }
 
   @override
-  Future<bool> signUpWithEmailAndPassword(SRUser user) async {
-    if (user.email == null) throw 'email cannot be null';
-    if (user.logPassword == null) throw 'password cannot be null';
-
+  Future<bool> signUpWithEmail(SRUser user) async {
     try {
-      final result = await _auth.signInWithEmailAndPassword(
+      final result = await _auth.createUserWithEmailAndPassword(
         email: user.email!,
         password: user.logPassword!,
       );
       if (result.user == null || result.user?.uid == null) return false;
       final newUser = user.copyWith(logPassword: '', uid: result.user!.uid);
       final ref = _firestore.collection(_collection).doc(newUser.uid);
-      ref.set(newUser.toMap());
-      return true;
+      await ref.set(newUser.toMap());
+      return result.user?.uid != null;
     } catch (e) {
       throw 'failed signing up';
     }

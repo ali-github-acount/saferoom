@@ -33,7 +33,7 @@ class AuthBloc extends Cubit<AuthState> {
   void signin() async {
     emit(state.loadingState());
     try {
-      final result = await _repo.signInWithEmailAndPassword(state.user);
+      final result = await _repo.signInWithEmail(state.user);
       emit(state.successState(isSignedIn: result));
     } catch (e) {
       emit(state.errorState('$e'));
@@ -41,9 +41,11 @@ class AuthBloc extends Cubit<AuthState> {
   }
 
   void signup() async {
+    emit(state.loadingState());
+
     try {
-      emit(state.loadingState());
-      final result = await _repo.signUpWithEmailAndPassword(state.user);
+      final result = await _repo.signUpWithEmail(state.user);
+
       emit(state.successState(isSignedIn: result));
     } catch (e) {
       emit(state.errorState('$e'));
