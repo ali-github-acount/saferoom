@@ -83,6 +83,9 @@ class SafeRoomApp extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
+          themeMode: ThemeMode.system,
+          darkTheme: ThemeData.dark(),
+          theme: ThemeData.light(),
         );
       },
     );

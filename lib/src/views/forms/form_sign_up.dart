@@ -15,20 +15,25 @@ class FormSignUp extends StatelessWidget {
     final name = BlocBuilder<AuthBloc, AuthState>(
       buildWhen: (prev, cur) => prev.user.name != cur.user.name,
       builder: (context, state) {
-        return TextFormField(
-          decoration: InputDecoration(label: Text(tr("signUp.nameLabel"))),
-          initialValue: state.user.name,
-          onSaved: context.read<AuthBloc>().setName,
+        return Flexible(
+          child: TextFormField(
+            decoration: InputDecoration(label: Text(tr("signUp.nameLabel"))),
+            initialValue: state.user.name,
+            onSaved: context.read<AuthBloc>().setName,
+          ),
         );
       },
     );
     final lastname = BlocBuilder<AuthBloc, AuthState>(
       buildWhen: (prev, cur) => prev.user.lastname != cur.user.lastname,
       builder: (context, state) {
-        return TextFormField(
-          decoration: InputDecoration(label: Text(tr("signUp.lastnameLabel"))),
-          initialValue: state.user.lastname,
-          onSaved: context.read<AuthBloc>().setLastname,
+        return Flexible(
+          child: TextFormField(
+            decoration:
+                InputDecoration(label: Text(tr("signUp.lastnameLabel"))),
+            initialValue: state.user.lastname,
+            onSaved: context.read<AuthBloc>().setLastname,
+          ),
         );
       },
     );
@@ -55,16 +60,20 @@ class FormSignUp extends StatelessWidget {
         child: Text(tr("signUp.signUpBtn")),
       ),
     );
+    final fullname = SizedBox(
+      child: Row(children: [name, const SizedBox(width: 10), lastname]),
+    );
     final signInMsg = TextButton(
       onPressed: () => context.push(ScreenSignIn.path),
       child: Text(tr("signUp.signInMsg")),
     );
+
     return Container(
       padding: const EdgeInsets.all(10),
       child: Form(
           key: _formKey,
           child: Column(
-            children: [name, lastname, email, password, signUpBtn, signInMsg],
+            children: [fullname, email, password, signUpBtn, signInMsg],
           )),
     );
   }

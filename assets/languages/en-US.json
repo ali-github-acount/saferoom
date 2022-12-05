@@ -29,5 +29,12 @@
         "english": "English",
         "other":"...other"
     
+    },
+    "notFound":{
+        "code": "404",
+        "message":"Page Not Found!",
+        "backBtn":"Go Back"
     }
+
+    
 }
