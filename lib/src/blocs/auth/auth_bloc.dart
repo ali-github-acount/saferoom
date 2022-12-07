@@ -14,6 +14,14 @@ class AuthBloc extends Cubit<AuthState> {
     fetchCurrentUser();
   }
 
+  void setProfileImageURL(String url) {
+    emit(state.copyWith(
+      user: state.user.copyWith(
+        profile: state.user.profile.copyWith(profileImageURL: url),
+      ),
+    ));
+  }
+
   void setName(String? name) {
     emit(state.copyWith(user: state.user.copyWith(name: name)));
   }

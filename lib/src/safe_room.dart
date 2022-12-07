@@ -6,10 +6,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saferoom/src/api/firebase_auth_api.dart';
+import 'package:saferoom/src/app_font.dart';
 import 'package:saferoom/src/app_router.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
 import 'package:saferoom/src/repositories/repo_auth.dart';
 import 'package:saferoom/src/supported_languages.dart';
+import 'package:saferoom/src/views/components/error_box.dart';
+import 'package:saferoom/src/views/screens/screen_start_app_loading.dart';
 
 class SafeRoom {
   static void init() async {
@@ -56,9 +59,14 @@ class SafeRoomBlocsProvider extends StatelessWidget {
   }
 }
 
-class SafeRoomApp extends StatelessWidget {
+class SafeRoomApp extends StatefulWidget {
   const SafeRoomApp({super.key});
 
+  @override
+  State<SafeRoomApp> createState() => _SafeRoomAppState();
+}
+
+class _SafeRoomAppState extends State<SafeRoomApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
@@ -82,10 +90,24 @@ class SafeRoomApp extends StatelessWidget {
           useInheritedMediaQuery: true,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
+          localeResolutionCallback: (deviceLocale, supportedLocales) {
+            for (var locale in supportedLocales) {
+              if (locale.languageCode == deviceLocale!.languageCode &&
+                  locale.countryCode == deviceLocale.countryCode) {
+                return deviceLocale;
+              }
+            }
+            return supportedLocales.first;
+          },
           locale: context.locale,
           themeMode: ThemeMode.system,
           darkTheme: ThemeData.dark(),
-          theme: ThemeData.light(),
+          theme: ThemeData(fontFamily: AppText.font(context.locale)),
+          builder: (context, child) {
+            if (state.isLoading) return const ScreenStartAppLoading();
+            if (state.hasError) return const Scaffold(body: SRErrorBox());
+            return child!;
+          },
         );
       },
     );

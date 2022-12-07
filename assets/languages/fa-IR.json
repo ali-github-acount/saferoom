@@ -1,36 +1,36 @@
 {
-    "startApp":{
-        "title": "SafeRoom"
+    "safeRoom":{
+        "version": "نسخه 1.0.0"
     },
-
-    "signIn":{
-        "title": "ورود حساب",
-        "message":"a message",
-        "passwordLabel":"رمز عبور",
-        "emailLabel":"آدرس الکترونیکی",
-        "signInBtn":"ورود",
-        "signUpMsg":"حساب ورودی ندارید..."
+    "label":{
+        "email":"آدرس الکترونیکی",
+        "password": "رمز عبور",
+        "name": "اسم",
+        "familyName": "اسم فامیلی"
         
     },
-    "signUp":{
-        "title": "ایجاد حساب",
-        "message":"a message",
-        "nameLabel":"اسم",
-        "lastnameLabel":"اسم فامیلی",
-        "passwordLabel":"رمز عبور",
-        "emailLabel":"آدرس الکترونیکی",
-        "signUpBtn":"ایجاد حساب",
-        "signInMsg":"حساب قبلی"
+    "button":{
+        "signIn":"ورود",
+        "signUp": "ثبت نام",
+        "signUpMsg":"حساب از قبل ایجاد شده ندارید...",
+        "signInMsg":"ورود با حساب از قبل ایجاد شده",
+        "back":"برگرد"
         
     },
+    "hint":{
+        "search":"جستجو"
+    },
+    "error":{
+        "404":"۴۰۴",
+        "pageNotFound":"صفحه پیدا نشد"
+    },
+   
     "language":{
         "persion": "فارسی",
-        "english": "انگلیسی",
-        "other":"...دیگر"
-    },
-    "notFound":{
-        "code": "۴۰۴",
-        "message":"صفحه مورد نظر دریافت نشد",
-        "backBtn":"رفتن به صفحه قبلی"
+        "english": "انگلیسی"
+        
+    
     }
+
+    
 }

@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:saferoom/src/constans.dart';
 
 class ScreenNotFound extends StatelessWidget {
   static const String path = '/not-found';
@@ -13,21 +13,19 @@ class ScreenNotFound extends StatelessWidget {
   Widget build(BuildContext context) {
     final message = Column(
       children: [
+        Text(getError404, style: SRTextStyle.ultraV1),
         Text(
-          tr("notFound.code"),
-          style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-        ),
-        Text(
-          "$requestPath ${tr("notFound.message")}",
-          style: const TextStyle(fontWeight: FontWeight.w500),
+          "$requestPath $getErrorPageNotFound",
+          style: SRTextStyle.sample,
         ),
       ],
     );
     final backBtn = Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
-          onPressed: () => context.go(previousPage ?? '/'),
-          child: Text(tr("notFound.backBtn"))),
+        onPressed: () => context.go(previousPage ?? '/'),
+        child: Text(getButtonBack),
+      ),
     );
     return Scaffold(
       body: Center(

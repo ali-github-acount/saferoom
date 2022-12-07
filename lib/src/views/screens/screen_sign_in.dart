@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
-import 'package:saferoom/src/views/lists/lists_languages.dart';
 
 import '../forms/form_sign_in.dart';
 
@@ -21,7 +20,6 @@ class ScreenSignIn extends StatelessWidget {
             child: Column(
               children: [
                 FormSignIn(),
-                const ListsLanguage(),
               ],
             ),
           ),

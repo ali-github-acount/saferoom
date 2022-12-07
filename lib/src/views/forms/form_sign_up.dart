@@ -1,8 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
+import 'package:saferoom/src/constans.dart';
 import 'package:saferoom/src/views/screens/screen_sign_in.dart';
 
 class FormSignUp extends StatelessWidget {
@@ -17,7 +17,8 @@ class FormSignUp extends StatelessWidget {
       builder: (context, state) {
         return Flexible(
           child: TextFormField(
-            decoration: InputDecoration(label: Text(tr("signUp.nameLabel"))),
+            decoration: InputDecoration(
+                label: Text(getLabelName, style: SRTextStyle.label)),
             initialValue: state.user.name,
             onSaved: context.read<AuthBloc>().setName,
           ),
@@ -29,8 +30,8 @@ class FormSignUp extends StatelessWidget {
       builder: (context, state) {
         return Flexible(
           child: TextFormField(
-            decoration:
-                InputDecoration(label: Text(tr("signUp.lastnameLabel"))),
+            decoration: InputDecoration(
+                label: Text(getLabelFamilyName, style: SRTextStyle.label)),
             initialValue: state.user.lastname,
             onSaved: context.read<AuthBloc>().setLastname,
           ),
@@ -41,14 +42,16 @@ class FormSignUp extends StatelessWidget {
       buildWhen: (prev, cur) => prev.user.email != cur.user.email,
       builder: (context, state) {
         return TextFormField(
-          decoration: InputDecoration(label: Text(tr("signUp.emailLabel"))),
+          decoration: InputDecoration(
+              label: Text(getLabelEmail, style: SRTextStyle.label)),
           initialValue: state.user.email,
           onSaved: context.read<AuthBloc>().setEmail,
         );
       },
     );
     final password = TextFormField(
-      decoration: InputDecoration(label: Text(tr("signUp.passwordLabel"))),
+      decoration: InputDecoration(
+          label: Text(getLabelPassword, style: SRTextStyle.label)),
       onSaved: context.read<AuthBloc>().setPassword,
     );
     final signUpBtn = Padding(
@@ -57,7 +60,7 @@ class FormSignUp extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             minimumSize: const Size(double.maxFinite, 45)),
         onPressed: () => signUp(context),
-        child: Text(tr("signUp.signUpBtn")),
+        child: Text(getButtonSignUp, style: SRTextStyle.button),
       ),
     );
     final fullname = SizedBox(
@@ -65,7 +68,7 @@ class FormSignUp extends StatelessWidget {
     );
     final signInMsg = TextButton(
       onPressed: () => context.push(ScreenSignIn.path),
-      child: Text(tr("signUp.signInMsg")),
+      child: Text(getButtonSignInMsg, style: SRTextStyle.buttonV2),
     );
 
     return Container(

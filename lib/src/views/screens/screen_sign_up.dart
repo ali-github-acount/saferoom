@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
 import 'package:saferoom/src/views/forms/form_sign_up.dart';
-import 'package:saferoom/src/views/lists/lists_languages.dart';
 
 class ScreenSignUp extends StatelessWidget {
   static const String path = '/sign-up';
@@ -25,7 +24,6 @@ class ScreenSignUp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     FormSignUp(),
-                    const ListsLanguage(),
                   ],
                 ),
               ),

@@ -1,39 +1,40 @@
 {
-    "startApp":{
-        "title": "SafeRoom"
+    "safeRoom":{
+        "version": "version 1.0.0"
     },
-
-    "signIn":{
-        "title": "Signin",
-        "message":"a message",
-        "passwordLabel":"Password",
-        "emailLabel":"Email Address",
-        "signInBtn":"signIn",
-        "signUpMsg":"don't have an acount..."
+    "title":{
+        "notification":"Notifications",
+        "message":"Messages"
+    },
+    "label":{
+        "email":"Email",
+        "password": "Password",
+        "name": "Name",
+        "familyName": "Family Name"
         
     },
-    "signUp":{
-        "title": "SignUp",
-        "message":"a message",
-        "nameLabel":"Name",
-        "lastnameLabel":"Family Name",
-        "passwordLabel":"Password",
-        "emailLabel":"Email Address",
-        "signUpBtn":"signUp",
-        "signInMsg":"already have acount"
+    "button":{
+        "signIn":"Sign In",
+        "signUp": "Sign Up",
+        "signUpMsg":"don't have an acount...",
+        "signInMsg":"already have acount",
+        "back":"Go Back"
         
     },
-
+    "hint":{
+       
+        "search":"Search"
+    },
+    "error":{
+        "404":"404",
+        "pageNotFound":"Page Not Found"
+    },
+   
     "language":{
         "persion": "Persion",
-        "english": "English",
-        "other":"...other"
+        "english": "English"
+        
     
-    },
-    "notFound":{
-        "code": "404",
-        "message":"Page Not Found!",
-        "backBtn":"Go Back"
     }
 
     

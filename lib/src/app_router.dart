@@ -1,6 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:saferoom/src/views/screens/screen_home.dart';
+import 'package:saferoom/src/views/screens/screen_messages.dart';
 import 'package:saferoom/src/views/screens/screen_not_found.dart';
+import 'package:saferoom/src/views/screens/screen_notifications.dart';
+import 'package:saferoom/src/views/screens/screen_search.dart';
 import 'package:saferoom/src/views/screens/screen_sign_in.dart';
 import 'package:saferoom/src/views/screens/screen_sign_up.dart';
 import 'package:saferoom/src/views/screens/screen_start_app.dart';
@@ -75,6 +78,18 @@ abstract class AppRoutes {
     GoRoute(
       path: ScreenSignUp.path,
       builder: (_, __) => const ScreenSignUp(),
+    ),
+    GoRoute(
+      path: ScreenSearch.path,
+      builder: (_, __) => const ScreenSearch(),
+    ),
+    GoRoute(
+      path: ScreenNotifications.path,
+      builder: (_, __) => const ScreenNotifications(),
+    ),
+    GoRoute(
+      path: ScreenMessages.path,
+      builder: (_, __) => const ScreenMessages(),
     ),
   ];
 

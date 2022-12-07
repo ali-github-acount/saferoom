@@ -1,8 +1,11 @@
+import 'package:saferoom/src/models/entities/profile.dart';
+
 class SRUser {
   final String? uid;
   final String? name;
   final String? lastname;
   final String? phoneNumber;
+  final Profile profile;
   final String? email;
   final String? logPassword;
 
@@ -11,6 +14,7 @@ class SRUser {
     required this.name,
     required this.lastname,
     required this.phoneNumber,
+    required this.profile,
     required this.email,
     required this.logPassword,
   });
@@ -19,6 +23,7 @@ class SRUser {
     this.name,
     this.lastname,
     this.phoneNumber,
+    this.profile = const Profile.init(),
     this.email,
     this.logPassword,
   });
@@ -28,6 +33,7 @@ class SRUser {
     String? name,
     String? lastname,
     String? phoneNumber,
+    Profile? profile,
     String? email,
     String? logPassword,
   }) {
@@ -36,6 +42,7 @@ class SRUser {
       name: name ?? this.name,
       lastname: lastname ?? this.lastname,
       phoneNumber: phoneNumber ?? this.phoneNumber,
+      profile: profile ?? this.profile,
       email: email ?? this.email,
       logPassword: logPassword ?? this.logPassword,
     );
@@ -47,6 +54,7 @@ class SRUser {
       'name': name,
       'lastname': lastname,
       'phoneNumber': phoneNumber,
+      'profile': profile,
       'email': email,
       'logPassword': logPassword,
     };
@@ -61,6 +69,7 @@ class SRUser {
       name: map['name'],
       lastname: map['lastname'],
       phoneNumber: map['phoneNumber'],
+      profile: map['profile'],
       email: map['email'],
       logPassword: map['logPassword'],
     );
