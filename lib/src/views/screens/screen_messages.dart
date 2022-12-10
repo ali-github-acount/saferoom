@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:go_router/go_router.dart';
+import 'package:saferoom/src/views/screens/screen_create_message.dart';
 
 import '../../constans.dart';
 import '../components/sr_app_bar.dart';
@@ -15,6 +18,11 @@ class ScreenMessages extends StatelessWidget {
       drawer: const SRDrawer(),
       appBar: SRAppbar(
         title: Text(getMessageTitle, style: SRTextStyle.title),
+        action: IconButton(
+            onPressed: () {
+              context.push(ScreenCreateMessage.path);
+            },
+            icon: const Icon(Entypo.new_message)),
       ),
       bottomNavigationBar: const SRBottomNavigationBar(currentIndex: 3),
     );

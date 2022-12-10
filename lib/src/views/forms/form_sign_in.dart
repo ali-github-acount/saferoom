@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
 import 'package:saferoom/src/constans.dart';
-import 'package:saferoom/src/views/screens/screen_sign_up.dart';
+import 'package:saferoom/src/views/screens/screen_create_acount.dart';
 
 class FormSignIn extends StatelessWidget {
   FormSignIn({super.key});
@@ -44,7 +44,7 @@ class FormSignIn extends StatelessWidget {
       ),
     );
     final signUpMsg = TextButton(
-      onPressed: () => context.push(ScreenSignUp.path),
+      onPressed: () => context.push(ScreenCreateAcount.path),
       child: Text(
         getButtonSignUpMsg,
         style: SRTextStyle.buttonV2,
@@ -55,7 +55,13 @@ class FormSignIn extends StatelessWidget {
       child: Form(
           key: formKey,
           child: Column(
-            children: [email, password, signInBtn, signUpMsg],
+            children: [
+              const Text("Sign in With Email Address and Password"),
+              email,
+              password,
+              signInBtn,
+              signUpMsg
+            ],
           )),
     );
   }

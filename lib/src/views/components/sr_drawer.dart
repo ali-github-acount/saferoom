@@ -11,11 +11,29 @@ class SRDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ElevatedButton(
-          onPressed: () {
-            context.read<AuthBloc>().signOut();
-          },
-          child: const Text("logout")),
+      child: Column(
+        children: [
+          const DrawerHeader(
+            child: CircleAvatar(
+              radius: 120,
+            ),
+
+            //     child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: [
+            //     const CircleAvatar(),
+            //     Text(context.read<AuthBloc>().state.user.name!)
+            //   ],
+            // )
+          ),
+          const Text("User name"),
+          ElevatedButton(
+              onPressed: () {
+                context.read<AuthBloc>().signOut();
+              },
+              child: const Text("logout")),
+        ],
+      ),
     );
   }
 }

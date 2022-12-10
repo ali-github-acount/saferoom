@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:saferoom/src/constans.dart';
 import 'package:saferoom/src/views/components/circular_loading.dart';
 
-class ScreenStartAppLoading extends StatelessWidget {
-  const ScreenStartAppLoading({super.key});
+class ScreenStartSR extends StatelessWidget {
+  const ScreenStartSR({super.key});
 
   @override
   Widget build(BuildContext context) {

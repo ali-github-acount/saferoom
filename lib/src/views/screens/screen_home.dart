@@ -8,7 +8,7 @@ import '../components/sr_drawer.dart';
 import 'screen_profile_image.dart';
 
 class ScreenHome extends StatelessWidget {
-  static const String path = '/home';
+  static const String path = '/';
   ScreenHome({super.key});
   final _scafoldKey = GlobalKey<ScaffoldState>();
   @override

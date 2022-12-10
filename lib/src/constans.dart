@@ -19,7 +19,7 @@ class SRTextStyle {
   static const TextStyle sample =
       TextStyle(fontSize: 18, fontWeight: FontWeight.normal);
   static const TextStyle caption =
-      TextStyle(fontSize: 18, fontWeight: FontWeight.normal);
+      TextStyle(fontSize: 14, fontWeight: FontWeight.w200);
 }
 
 //title

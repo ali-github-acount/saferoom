@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saferoom/src/models/entities/user.dart';
-import 'package:saferoom/src/repositories/repo_auth.dart';
+
+import '../../models/entities/user.dart';
+import '../../repositories/repo_auth.dart';
 
 part 'auth_state.dart';
 

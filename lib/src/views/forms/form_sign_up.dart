@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
 import 'package:saferoom/src/constans.dart';
-import 'package:saferoom/src/views/screens/screen_sign_in.dart';
+import 'package:saferoom/src/views/screens/screen_sr_auth.dart';
 
 class FormSignUp extends StatelessWidget {
   FormSignUp({super.key});
@@ -67,7 +67,7 @@ class FormSignUp extends StatelessWidget {
       child: Row(children: [name, const SizedBox(width: 10), lastname]),
     );
     final signInMsg = TextButton(
-      onPressed: () => context.push(ScreenSignIn.path),
+      onPressed: () => context.push(ScreenSRAuth.path),
       child: Text(getButtonSignInMsg, style: SRTextStyle.buttonV2),
     );
 
@@ -76,7 +76,20 @@ class FormSignUp extends StatelessWidget {
       child: Form(
           key: _formKey,
           child: Column(
-            children: [fullname, email, password, signUpBtn, signInMsg],
+            children: [
+              fullname,
+              email,
+              password,
+              signUpBtn,
+              signInMsg,
+              const Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  "By signing up, you agree to our Terms, Privacy Policy, and Cookie Use.",
+                  style: SRTextStyle.caption,
+                ),
+              )
+            ],
           )),
     );
   }

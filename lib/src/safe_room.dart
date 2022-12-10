@@ -9,10 +9,12 @@ import 'package:saferoom/src/api/firebase_auth_api.dart';
 import 'package:saferoom/src/app_font.dart';
 import 'package:saferoom/src/app_router.dart';
 import 'package:saferoom/src/blocs/auth/auth_bloc.dart';
+import 'package:saferoom/src/blocs/chat/chat_bloc.dart';
 import 'package:saferoom/src/repositories/repo_auth.dart';
+import 'package:saferoom/src/repositories/repo_chat.dart';
 import 'package:saferoom/src/supported_languages.dart';
 import 'package:saferoom/src/views/components/error_box.dart';
-import 'package:saferoom/src/views/screens/screen_start_app_loading.dart';
+import 'package:saferoom/src/views/screens/screen_start_sr.dart';
 
 class SafeRoom {
   static void init() async {
@@ -38,7 +40,8 @@ class SafeRoomRepositoriesProvider extends StatelessWidget {
     final fs = FirebaseFirestore.instance;
 
     return MultiRepositoryProvider(providers: [
-      RepositoryProvider(create: (_) => AuthRepo(FirebaseAuthApi(auth, fs)))
+      RepositoryProvider(create: (_) => AuthRepo(FirebaseAuthApi(auth, fs))),
+      RepositoryProvider(create: (_) => ChatRepo(FirebaseAuthApi(auth, fs)))
     ], child: const SafeRoomBlocsProvider());
   }
 }
@@ -52,6 +55,9 @@ class SafeRoomBlocsProvider extends StatelessWidget {
       providers: [
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(context.read<AuthRepo>()),
+        ),
+        BlocProvider<ChatCubit>(
+          create: (context) => ChatCubit(context.read<ChatRepo>()),
         )
       ],
       child: const SafeRoomApp(),
@@ -59,14 +65,9 @@ class SafeRoomBlocsProvider extends StatelessWidget {
   }
 }
 
-class SafeRoomApp extends StatefulWidget {
+class SafeRoomApp extends StatelessWidget {
   const SafeRoomApp({super.key});
 
-  @override
-  State<SafeRoomApp> createState() => _SafeRoomAppState();
-}
-
-class _SafeRoomAppState extends State<SafeRoomApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
@@ -104,7 +105,7 @@ class _SafeRoomAppState extends State<SafeRoomApp> with WidgetsBindingObserver {
           darkTheme: ThemeData.dark(),
           theme: ThemeData(fontFamily: AppText.font(context.locale)),
           builder: (context, child) {
-            if (state.isLoading) return const ScreenStartAppLoading();
+            if (state.isLoading) return const ScreenStartSR();
             if (state.hasError) return const Scaffold(body: SRErrorBox());
             return child!;
           },

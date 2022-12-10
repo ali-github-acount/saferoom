@@ -4,7 +4,8 @@ import '../../constans.dart';
 
 class SRAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
-  const SRAppbar({Key? key, this.title}) : super(key: key);
+  final Widget? action;
+  const SRAppbar({Key? key, this.title, this.action}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,8 @@ class SRAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: title ?? getAppName(size: 28),
       centerTitle: true,
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.lock_open))
+        action ??
+            IconButton(onPressed: () {}, icon: const Icon(Icons.lock_open))
       ],
       leading: GestureDetector(
         onTap: () {
